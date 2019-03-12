@@ -1,5 +1,4 @@
 
-
 public class Matrix implements Operand
 {
     private Integer columns;
@@ -36,6 +35,23 @@ public class Matrix implements Operand
         this.rowVectors = rowVectors;
         this.rows = rowVectors.length;
         this.columns = Integer.parseInt(rowVectors[0].getSize());
+    }
+
+    public Matrix getMinorMatrix( int row, int column )
+    {
+        Double[this.row-1][this.column-1] minor = new Double[][];
+        for(int i = 0 ; i < this.row ; i++ )
+        {
+            if (i == row ) continue;
+            for(int j = 0 ; j < this.columns ; j++)
+            {
+                if(j == column ) continue;
+
+                minor[i][j] = this.rowVectors[j].getComponent(i);
+            }
+        }
+        return minor;
+
     }
 
     public Vector getRowVectors(int element )
